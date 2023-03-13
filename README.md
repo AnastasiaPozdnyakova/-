@@ -1,8 +1,35 @@
-# -
-Репозиторий для разных проектов
 
-Добро пожаловать на страницу с моим проектом под названием “виселица”, написанный на языке питон и в который можно играть. При запуске игры выдаются правила и инструкция как играть, работают стандартные правила виселицы: заглядывается слово, вы его постепенно отгадывайте буквами, теряя попытки. Если вы не угадали букву в слове, вам игра покажет сообщение об этом, а если угадали, то покажет где эта буква находится в слове. Ваша цель: отгадать все буквы в загаданном слове за ограниченное количество попыток.
-Надеюсь, вам понравится мой проект, удачной игры!
-
-Hello and welcome to my project : The Hangman game! The game is made and works in python and is playable. When you start the game, you are given a set of rules and instructions on how to play the game, however standard hangman rules applying: a random word is generated and you have to guess it by letters, if your guess is wrong, you will get a message about it from the game, if it is correct, the game will show you where the letter that you guessed is in your target word. Every guess you make a “life” Is deducted, the aim of the game is to guess the word in a limited amount of guesses.
-I hope you do like my project, have fun!
+print("Игра Виселеца")
+print("Правила Игры:")
+print("Задаётся случайное слово из моего набора, показанное на экране через # тебе надо его угадать. ")
+print("Ты это делаешь через буквы, отгадывая за попытку одну букву, если ты угадываешь букву она высвечивается вместо # где она стояла")
+print("Отгадывай буквы по одной и нажимай enter!")
+print("У тебя 10 попыток, но если мозг не варит вводи команду дайответблин, она покажет загаданное слово ")
+print('когда игра у тебя просит букву, вводи её без всякого лишнего, только саму букву')
+print("Весёлой игры!") 
+from  random import choice
+word = ("кактус", "котлетка" .split())
+x = choice(word).lower()
+gueses = ''
+turns = 10
+while turns > 0:         
+    fail = 0               
+    for char in x:     
+        if char in gueses:    
+            print (char,end=""),    
+        else:
+            print (" # ",end=""),     
+            fail += 1    
+    if fail == 0:        
+        print ("  Поздравляю! ты выйграл")
+        break            
+    guess = input("угадайте букву:") 
+    gueses += guess                    
+    if guess not in x:  
+        turns -= 1        
+        print ("в этом слове нет вашей буквы")  
+        print ("У вас осталось", + turns, 'попыток' )
+        if turns == 0:           
+            print ("Вы проиграли :(")
+    if guess == 'дайответблин':
+        print("слово:", x)
